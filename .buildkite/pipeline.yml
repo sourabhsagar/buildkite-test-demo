@@ -1,11 +1,15 @@
+env:
+  # Test Engine API Token
+  BUILDKITE_ANALYTICS_TOKEN: "RHqCqo9fN7Y9eAygJav"
+
 steps:
-  - label: ":jest: Run Tests (No Test Engine)"
+  - label: ":jest: Run All Tests with Test Engine"
     command: |
       echo "--- :package: Installing dependencies"
       npm install
 
-      echo "--- :jest: Running all tests"
-      npm test || echo "Some tests failed as expected!"
+      echo "--- :jest: Running all tests with Test Engine tracking"
+      npm test
 
     # Allow the build to continue even if tests fail
     soft_fail: true
