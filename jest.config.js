@@ -2,7 +2,16 @@ module.exports = {
   // Send results to Test Engine
   reporters: [
     'default',
-    'buildkite-test-collector/jest/reporter'
+    'buildkite-test-collector/jest/reporter',
+    // Also generate JUnit XML
+    ['jest-junit', {
+      outputDirectory: './test-results',
+      outputName: 'junit.xml',
+      classNameTemplate: '{classname}',
+      titleTemplate: '{title}',
+      ancestorSeparator: ' › ',
+      usePathForSuiteName: true
+    }]
   ],
 
   // Enable column + line capture for Test Engine

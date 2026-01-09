@@ -15,8 +15,15 @@ steps:
       echo "--- :jest: Running all tests with Test Engine tracking"
       npm test
 
+      echo "--- :bar_chart: JUnit XML generated at test-results/junit.xml"
+      ls -lh test-results/
+
     # Allow the build to continue even if tests fail
     soft_fail: true
+
+    # Upload JUnit XML as artifact
+    artifact_paths:
+      - "test-results/junit.xml"
 
   - label: ":white_check_mark: Run Only Passing Tests"
     command: |
