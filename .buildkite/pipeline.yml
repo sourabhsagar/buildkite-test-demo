@@ -1,0 +1,32 @@
+steps:
+  - label: ":jest: Run Tests with Test Engine"
+    command: |
+      echo "--- :package: Installing dependencies"
+      npm install
+
+      echo "--- :buildkite: Installing Test Engine Client (bktec)"
+      curl -Lfs https://github.com/buildkite/test-engine-client/releases/latest/download/bktec-linux-amd64 -o /usr/local/bin/bktec
+      chmod +x /usr/local/bin/bktec
+
+      echo "--- :jest: Running tests with BuildKite Test Engine"
+      bktec -- npm test
+
+    env:
+      # These will be set in BuildKite UI or as secrets
+      BUILDKITE_TEST_ENGINE_API_TOKEN: "${BUILDKITE_TEST_ENGINE_API_TOKEN}"
+      BUILDKITE_TEST_ENGINE_SUITE_SLUG: "${BUILDKITE_TEST_ENGINE_SUITE_SLUG}"
+
+    agents:
+      queue: "default"
+
+    # Allow the build to continue even if tests fail
+    # This lets you see all test results in Test Engine
+    soft_fail: true
+
+  - label: ":bar_chart: Test Results Summary"
+    command: |
+      echo "Check BuildKite Test Engine dashboard for detailed analytics"
+      echo "You can see:"
+      echo "  - Flaky test detection"
+      echo "  - Performance trends"
+      echo "  - Failure patterns"

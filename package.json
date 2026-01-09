@@ -1,0 +1,11 @@
+{
+  "name": "buildkite-test-demo",
+  "version": "1.0.0",
+  "description": "Demo project to test BuildKite Test Engine with passing, failing, and flaky tests",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
