@@ -8,6 +8,10 @@ steps:
       echo "--- :package: Installing dependencies"
       npm install
 
+      echo "--- :buildkite: Checking Test Engine environment"
+      echo "BUILDKITE_ANALYTICS_TOKEN is set: $${BUILDKITE_ANALYTICS_TOKEN:+YES}"
+      echo "CI environment: $$CI"
+
       echo "--- :jest: Running all tests with Test Engine tracking"
       npm test
 
