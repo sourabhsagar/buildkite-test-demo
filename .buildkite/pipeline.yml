@@ -1,6 +1,6 @@
 env:
   # Test Engine API Token
-  BUILDKITE_ANALYTICS_TOKEN: "RHqCqo9fN7Y9eAygJav"
+  BUILDKITE_ANALYTICS_TOKEN: "RHqCqo9fN7Y9eAygJawsM4sE"
 
 steps:
   - label: ":jest: Run All Tests with Test Engine"
