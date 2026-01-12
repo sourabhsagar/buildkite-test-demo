@@ -10,6 +10,13 @@ steps:
           workdir: /workdir
           environment:
             - "BUILDKITE_ANALYTICS_TOKEN"
+            - "BUILDKITE_COMMIT"
+            - "BUILDKITE_BRANCH"
+            - "BUILDKITE_BUILD_ID"
+            - "BUILDKITE_BUILD_NUMBER"
+            - "BUILDKITE_JOB_ID"
+            - "BUILDKITE_BUILD_URL"
+            - "BUILDKITE_MESSAGE"
     command: |
       echo "--- :package: Installing dependencies"
       npm install
