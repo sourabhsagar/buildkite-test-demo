@@ -4,6 +4,10 @@ env:
 
 steps:
   - label: ":jest: Run All Tests with Test Engine"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+          workdir: /workdir
     command: |
       echo "--- :package: Installing dependencies"
       npm install
@@ -26,17 +30,29 @@ steps:
       - "test-results/junit.xml"
 
   - label: ":white_check_mark: Run Only Passing Tests"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+          workdir: /workdir
     command: |
       npm install
       npm test passing.test.js
 
   - label: ":x: Run Only Failing Tests"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+          workdir: /workdir
     command: |
       npm install
       npm test failing.test.js || echo "Tests failed as expected!"
     soft_fail: true
 
   - label: ":game_die: Run Only Flaky Tests"
+    plugins:
+      - docker#v5.11.0:
+          image: "node:20"
+          workdir: /workdir
     command: |
       npm install
       npm test flaky.test.js || echo "Some tests may have failed (flaky!)"
