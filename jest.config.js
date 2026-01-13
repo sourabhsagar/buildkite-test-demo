@@ -2,7 +2,11 @@ module.exports = {
   // Send results to Test Engine
   reporters: [
     'default',
-    'buildkite-test-collector/jest/reporter',
+    ['buildkite-test-collector/jest/reporter', {
+      tags: {
+        priority: 'high'
+      }
+    }],
     // Also generate JUnit XML
     ['jest-junit', {
       outputDirectory: './test-results',
